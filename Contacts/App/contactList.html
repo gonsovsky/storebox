@@ -1,0 +1,65 @@
+﻿
+<div class="panel panel-primary">
+    
+    <div class="panel-heading">Список контактов</div>
+    <div class="panel-body">
+        <div class="col-md-6">
+            <a class="btn btn-primary" href="#/newcontact"><i class="glyphicon glyphicon-file"></i> Добавить контакт</a>
+        </div>
+        <div class="col-xs-10 col-lg-6 col-md-6">
+            <div class="input-group">
+                <input type="text" id="searchText" class="form-control pull-right" placeholder="Искать..." ng-model="search_txt">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">
+                        <i class="text-muted glyphicon glyphicon-search"></i>
+                    </button>
+                </span>
+            </div><!-- /input-group -->
+       </div><!-- /.col-lg-6 -->
+        <div class="table table-responsive">
+            <table class="table table-striped">
+                <tr>
+                
+                <td style="cursor: move;" ng-click="SetSort('Fio',!sortReverse)">
+                    <strong> [ Ф.И.О. ]</strong>
+                    <span ng-show="sortType == 'Fio'">
+                        <span ng-show="sortType == 'Fio'"><span ng-show="!sortReverse"><strong>^</strong></span><span ng-show="sortReverse"><strong>v</strong></span></span>
+                    </span>
+                </td>
+
+                <td style="cursor: move;" ng-click="SetSort('HumanizedPhone',!sortReverse)">
+                    <strong>[ Моб. телефон ]</strong>
+                    <span ng-show="sortType == 'HumanizedPhone'"><span ng-show="!sortReverse"><strong>^</strong></span><span ng-show="sortReverse"><strong>v</strong></span></span>
+                </td>
+                <td>Фото</td>
+
+                <td></td>
+                <td></td>
+                </tr>
+                <tbody>
+                    <tr ng-repeat="contact in contacts | filter:search_txt | orderBy:sortType:sortReverse ">
+                        <td>{{contact.Fio}}</td>
+                        <td>{{contact.HumanizedPhone}}</td>
+                        <td><img width="112" height="130" id="im{{contact.Id}}" src="{{contact.PhotoLink}}" /></td>
+                        <td>
+                            <a class="btn btn-primary" href="#/{{contact.Id}}">
+                                <i class="glyphicon glyphicon-edit"></i>
+                            </a>
+                        </td>
+
+                        <td>
+                            <a class="btn btn-danger" ng-click='contactDel(contact.Id)'>
+                                <i class="glyphicon glyphicon-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+</div>
+
+<script>
+ 
+</script>

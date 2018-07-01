@@ -1,0 +1,62 @@
+﻿
+<div class="panel panel-primary">
+    
+    <div class="panel-heading">Карточка контакта</div>
+    <div class="panel-body">
+        <form class="form-horizontal" role="form" id="contactForm" name="contactForm">
+
+            <div class="form-group">
+                <label for="Fio" class="col-sm-3 control-label">Ф.И.О.</label>
+                <div class="col-sm-6">
+                    <input type="text" id="Fio" name="Fio" class="form-control"
+                           ng-model="contact.Fio" ng-required="true" placeholder="Ф.И.О."/>   
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="HumanizedPhone" class="col-sm-3 control-label">Мобильный #</label>
+                <div class="col-sm-6">
+                    <input type="text" id="HumanizedPhone" name="HumanizedPhone" class="form-control"
+                      ng-pattern="/^((\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{10}$/"  ng-model="contact.HumanizedPhone" ng-required="true" placeholder="Мобильный #" />
+                            <span ng-show="contactForm.HumanizedPhone.$error.pattern">Используйте формат: +7-XXX-XXX-XX-XX</span>
+                            <span ng-show="contactForm.HumanizedPhone.$error.required">Необходимо заполнить поле</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="uploadButton" class="col-sm-3 control-label">Фото</label>
+                
+                <div class="col-sm-6">
+                    <img width="112" height="130" alt="Фотография" src="{{contact.PhotoLink}}" />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button id="uploadButton" name="uploadButton" class="btn btn-toolbar"
+                            ng-click="contactCancel()">
+                        <i class="glyphicon glyphicon-hdd"></i> Загрузить
+                    </button>
+                </div>
+            </div>
+          
+
+            <div class="form-group">
+                <div class="col-md-4 col-md-offset-3 col-sm-3 col-sm-offset-3 ">
+                    <button id="cancelSave" name="cancelSave" class="btn btn-warning" 
+                            ng-click="contactCancel()"><i class="glyphicon glyphicon-thumbs-down"></i> Отмена</button>
+                    <button id="submitButton" name="submitButton" class="btn btn-primary" 
+                            ng-click="contactSave()"><i class="glyphicon glyphicon-thumbs-up"></i> Сохранить</button>
+
+                    <button id="deleteButton" name="submitForm" class="btn btn-danger"
+                            data-ng-show="isEdit"
+                            ng-click="contactDelete('md',contact)">
+                        
+                        <i class="glyphicon glyphicon-trash"></i> Удалить
+                    </button>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+

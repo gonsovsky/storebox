@@ -1,0 +1,49 @@
+﻿
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="cancel()" aria-hidden="true">&times;</button>
+        <h3 class="modal-title">Удалить {{contact.Fio}} {{contact.HumanizedPhone}} ?</h3>
+    </div>
+    <div class="modal-body">
+        <div class="container">
+            <form class="form-horizontal" role="form" id="contactForm" name="contactForm">
+
+                <div style="float:left">
+                    <!--<div class="col-sx-12 col-sm-8 col-md-6 col-lg-6">-->
+                    <div class="form-group">
+                        <label class="control-label">Ф.И.О.</label>
+                        <div class="controls">
+                            <input type="text" data-ng-model="contact.Fio" class="form-control" ng-disabled="true">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Мобильный #</label>
+                        <div class="controls">
+                            <input type="text" data-ng-model="contact.HumanizedPhone" class="form-control" ng-disabled="true">
+                        </div>
+                    </div>
+                </div>
+
+                <div style="position: relative; float: left">
+                    <div class="col-md-6 pull-right">
+                        <img src="{{contact.PhotoLink}}" alt="Фото"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            <div class="col-md-6 pull-left">
+                <div data-ng-show="error" class="text-danger">
+                    <strong data-ng-bind="error"></strong>
+                </div>
+            </div>
+
+            <div class="col-md-6 pull-right">
+                <button class="btn btn-warning" ng-click="cancel()"><i class="glyphicon glyphicon-thumbs-down"></i> Отмена</button>
+                <button class="btn btn-danger" ng-click="ok(contact)"><i class="glyphicon glyphicon-trash"></i> Удалить</button>
+                
+            </div>
+        </div>
+    </div>
+
