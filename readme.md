@@ -1,3 +1,3 @@
 СторБокс. Проверочная работа. Гонсовский К.
 
-C#: WebApi + AngularJS 1.3.5
+C#: MVC, WebApi + AngularJS 1.3.5
